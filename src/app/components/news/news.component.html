@@ -1,0 +1,5 @@
+<div *ngFor="let story of stories" class="news-card">
+  <h3 class="news-title">{{ story.title }}</h3>
+  <p class="news-abstract">{{ story.abstract }}</p>
+  <a class="news-link" href="{{ story.url }}" target="_blank">Read more</a>
+</div>
