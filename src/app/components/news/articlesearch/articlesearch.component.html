@@ -1,0 +1,8 @@
+<input [(ngModel)]="searchTerm" placeholder="Search NYT Articles...">
+<button (click)="onSearch()">Search</button>
+<!-- TODO: Format search results card format -->
+<ul>
+  <li *ngFor="let article of articles">
+    <a [href]="article.web_url" target="_blank">{{ article.headline.main }}</a>
+  </li>
+</ul>
