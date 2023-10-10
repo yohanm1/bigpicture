@@ -10,4 +10,11 @@ export interface NYTArticle {
   headline: {
     main: string;
   }
+  snippet: string;
+  multimedia: NYTMedia[];
+}
+
+export interface NYTMedia {
+  url?: string;
+  subtype: string;
 }

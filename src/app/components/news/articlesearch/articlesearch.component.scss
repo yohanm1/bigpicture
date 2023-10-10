@@ -1,0 +1,91 @@
+// Search container to hold the input and button
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; // Giving some space before displaying results or other content
+}
+
+// Search input field styling
+.search-input {
+    flex-grow: 1; // Allows the input to take up available space
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px; // Rounded corners on the left side
+    outline: none;
+
+    &:focus {
+        border-color: #007BFF; // Change border color on focus for better UX
+    }
+}
+
+// Search button styling
+.search-btn {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #007BFF;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0; // Rounded corners on the right side
+
+    &:hover {
+        background-color: #0056b3; // Darker shade for hover effect
+    }
+}
+
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.card {
+    flex: 1 1 300px; // Flex property for responsive card width
+    max-width: 600px; // Max width of card
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+
+    &:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.card-content {
+    padding: 1rem;
+}
+
+.card-image img {
+    width: 100%;          // Image will scale based on the width of its container
+    //height: auto;         // Height will adjust based on the aspect ratio of the image
+    height: 300px;    // Setting max height as mentioned
+    object-fit: cover;    // Image will cover the available space without stretching
+    display: block;       // Remove any default spacing/margin
+}
+
+// Media queries for larger screens
+@media (min-width: 768px) {
+    .card {
+        max-width: 45%; // Allowing two cards per row for mid-sized screens
+    }
+}
+
+@media (min-width: 1024px) {
+    .card {
+        max-width: 31.333%; // Allowing three cards per row for larger screens
+    }
+}
