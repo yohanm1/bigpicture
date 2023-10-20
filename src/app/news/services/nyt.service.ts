@@ -24,7 +24,7 @@ export class nytService implements newsService {
     private transformToArticles(stories: any[]): article[] {
         return stories.map(story => ({
             title: story.title,
-            url: story.web_url,
+            url: story.url,
             abstract: story.abstract,
             imageUrl: story.multimedia?.[0]?.url || ''
         }));

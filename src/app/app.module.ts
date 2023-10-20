@@ -10,8 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { SearchTrendingComponent } from './components/search-trending/search-trending.component';
 import { SettingsComponent } from './components/settings/settings.component';
-import { NewsComponent } from './components/news/topstories/topstories.component';
 import { ArticlesearchComponent } from './components/news/articlesearch/articlesearch.component';
+import { NewsModule } from './news/news.module';
 
 @NgModule({
   declarations: [
@@ -21,14 +21,14 @@ import { ArticlesearchComponent } from './components/news/articlesearch/articles
     CategoriesComponent,
     SearchTrendingComponent,
     SettingsComponent,
-    NewsComponent,
     ArticlesearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NewsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,16 @@
+<div class="card-container">
+    <div *ngFor="let article of articles" class="card">
+        <a [href]="article.url" target="_blank" class="card-link">
+
+            <div class="card-image" *ngIf="article.imageUrl != ''">
+                <img [src]="article.imageUrl" alt="Article Thumbail">
+            </div>
+
+            <div class="card-content">
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.abstract }}</p>
+            </div>
+
+        </a>
+    </div>
+</div>
