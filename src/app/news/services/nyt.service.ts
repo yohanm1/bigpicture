@@ -1,18 +1,18 @@
 import { HttpClient } from "@angular/common/http";
-import { Observable, map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Injectable } from "@angular/core";
-import { article, newsService } from "../models/news.model";
+import { Article, NewsService } from "../models/news.model";
 
 @Injectable({
     providedIn: 'root'
 })
-export class nytService implements newsService {
+export class nytService implements NewsService {
     private API_ENDPOINT = 'https://api.nytimes.com/svc/';
     private API_KEY = 'j23Xr8PtXNrBEBqJYI75wOCFSHMerdw1';
 
     constructor(private http: HttpClient) {}
 
-    getTopStories() {
+    getTopStories(): Observable<Article[]> {
         const section: string = "home";
         const url = `${this.API_ENDPOINT}topstories/v2/${section}.json?api-key=${this.API_KEY}`;
 
@@ -21,7 +21,7 @@ export class nytService implements newsService {
         );
     }
 
-    private transformToArticles(stories: any[]): article[] {
+    private transformToArticles(stories: any[]): Article[] {
         return stories.map(story => ({
             title: story.title,
             url: story.url,

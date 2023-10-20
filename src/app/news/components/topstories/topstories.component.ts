@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { NewsServiceFactory } from "../../services/news-factory.service";
-import { article } from "../../models/news.model";
+import { Article } from "../../models/news.model";
+import { NewsAggregatorService } from "../../services/newsAggregator.service";
 
 @Component({
     selector: 'news-topstories',
@@ -8,14 +8,12 @@ import { article } from "../../models/news.model";
     styleUrls: ['./topstories.component.scss']
 })
 export class TopStoriesComponent {
-    articles: article[] = []
+    articles: Article[] = []
 
-    constructor(private newsServiceFactory: NewsServiceFactory) {}
+    constructor(private newsAggregatorService: NewsAggregatorService) {}
 
     ngOnInit() {
-        const newsService = this.newsServiceFactory.getService('nyt');
-
-        newsService.getTopStories().subscribe(response => { this.articles = response; });
+        this.newsAggregatorService.getTopStories().subscribe(response => { this.articles = response; });
     }
 
 }

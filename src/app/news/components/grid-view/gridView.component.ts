@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { article } from "../../models/news.model";
+import { Article } from "../../models/news.model";
 
 @Component({
     selector: 'news-gridView',
@@ -8,6 +8,6 @@ import { article } from "../../models/news.model";
 })
 export class gridViewComponent {
 
-    @Input() articles: article[] = [];
+    @Input() articles: Article[] = [];
 
 }
