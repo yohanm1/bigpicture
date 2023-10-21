@@ -5,6 +5,7 @@ import { nytService } from './services/nyt.service';
 import { TopStoriesComponent } from './components/topstories/topstories.component';
 import { ArticleSearchComponent } from './components/articlesearch/articlesearch.component';
 import { NewsAggregatorService } from './services/newsAggregator.service';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,8 @@ import { NewsAggregatorService } from './services/newsAggregator.service';
 		gridViewComponent
 	],
 	imports: [
-		CommonModule
+		CommonModule,
+		FormsModule
 	],
 	exports: [
 		TopStoriesComponent,

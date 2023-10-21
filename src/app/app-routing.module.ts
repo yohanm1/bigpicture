@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { CategoriesComponent } from './components/categories/categories.component';
-import { SearchTrendingComponent } from './components/search-trending/search-trending.component';
-import { SettingsComponent } from './components/settings/settings.component';
+import { HomeComponent } from './shared/components/home/home.component';
+import { CategoriesComponent } from './shared/components/categories/categories.component';
+import { SearchTrendingComponent } from './shared/components/search-trending/search-trending.component';
+import { SettingsComponent } from './shared/components/settings/settings.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },

@@ -6,11 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopNavComponent } from './navigation/top-nav/top-nav.component';
-import { HomeComponent } from './components/home/home.component';
-import { CategoriesComponent } from './components/categories/categories.component';
-import { SearchTrendingComponent } from './components/search-trending/search-trending.component';
-import { SettingsComponent } from './components/settings/settings.component';
-import { ArticlesearchComponent } from './components/news/articlesearch/articlesearch.component';
+import { HomeComponent } from './shared/components/home/home.component';
+import { CategoriesComponent } from './shared/components/categories/categories.component';
+import { SearchTrendingComponent } from './shared/components/search-trending/search-trending.component';
+import { SettingsComponent } from './shared/components/settings/settings.component';
 import { NewsModule } from './news/news.module';
 
 @NgModule({
@@ -20,8 +19,7 @@ import { NewsModule } from './news/news.module';
     HomeComponent,
     CategoriesComponent,
     SearchTrendingComponent,
-    SettingsComponent,
-    ArticlesearchComponent
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

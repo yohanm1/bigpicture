@@ -34,16 +34,16 @@ export class nytService implements NewsService {
         const url = `${this.API_ENDPOINT}search/v2/articlesearch.json?q=${query}&api-key=${this.API_KEY}`;
 
         return this.http.get<any>(url).pipe(
-            map(response => this.transformSearchToArticles(response.results))
+            map(responseObject => this.transformSearchToArticles(responseObject.response.docs))
         );
     }
 
     private transformSearchToArticles(stories: any[]): Article[] {
         return stories.map(story => ({
-            title: story.headline,
+            title: story.headline.main,
             url: story.web_url,
             abstract: story.snippet,
-            imageUrl: story.multimedia?.[0]?.url || ''
+            imageUrl: story.multimedia?.[0]?.url ? 'https://www.nytimes.com/' + story.multimedia?.[0]?.url : ''
         }));
     }
 }

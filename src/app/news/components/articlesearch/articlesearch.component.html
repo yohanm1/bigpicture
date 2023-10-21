@@ -1,0 +1,7 @@
+<div class="search-container">
+    <form (submit)="onSearch(); $event.preventDefault();">
+        <input class="search-input" [(ngModel)]="searchTerm" name="searchTerm" placeholder="Search Articles...">
+        <button class="search-btn" type="submit">Search</button>
+    </form>
+</div>
+<news-gridView [articles]="articles"></news-gridView>
