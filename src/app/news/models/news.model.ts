@@ -2,6 +2,7 @@ import { Observable } from "rxjs";
 
 export interface NewsService {
     getTopStories(): Observable<Article[]>;
+    searchArticles(query: string): Observable<Article[]>;
 }
 
 export interface Article {

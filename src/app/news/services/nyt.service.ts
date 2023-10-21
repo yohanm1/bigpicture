@@ -17,15 +17,32 @@ export class nytService implements NewsService {
         const url = `${this.API_ENDPOINT}topstories/v2/${section}.json?api-key=${this.API_KEY}`;
 
         return this.http.get<any>(url).pipe(
-            map(response => this.transformToArticles(response.results))
+            map(response => this.transformTopStoriesToArticles(response.results))
         );
     }
 
-    private transformToArticles(stories: any[]): Article[] {
+    private transformTopStoriesToArticles(stories: any[]): Article[] {
         return stories.map(story => ({
             title: story.title,
             url: story.url,
             abstract: story.abstract,
+            imageUrl: story.multimedia?.[0]?.url || ''
+        }));
+    }
+
+    searchArticles(query: string): Observable<Article[]> {
+        const url = `${this.API_ENDPOINT}search/v2/articlesearch.json?q=${query}&api-key=${this.API_KEY}`;
+
+        return this.http.get<any>(url).pipe(
+            map(response => this.transformSearchToArticles(response.results))
+        );
+    }
+
+    private transformSearchToArticles(stories: any[]): Article[] {
+        return stories.map(story => ({
+            title: story.headline,
+            url: story.web_url,
+            abstract: story.snippet,
             imageUrl: story.multimedia?.[0]?.url || ''
         }));
     }

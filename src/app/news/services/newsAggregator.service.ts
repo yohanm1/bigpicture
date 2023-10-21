@@ -17,10 +17,18 @@ export class NewsAggregatorService {
 
     getTopStories(): Observable<Article[]> {
         const allNewsObservables = this.sources.map(source => source.getTopStories());
+        return this.combineArticlesFromSources(allNewsObservables);
+    }
 
-        return forkJoin(allNewsObservables).pipe(
-            map(results => {
-                return results.reduce((acc, val) => acc.concat(val), []);
+    searchArticles(query: string): Observable<Article[]> {
+        const allNewsObservables = this.sources.map(source => source.searchArticles(query));
+        return this.combineArticlesFromSources(allNewsObservables);
+    }
+
+    private combineArticlesFromSources(allArticleObservables: Observable<Article[]>[]): Observable<Article[]> {
+        return forkJoin(allArticleObservables).pipe(
+            map(articlesArray => {
+                return articlesArray.reduce((acc, val) => acc.concat(val), []);
             })
         );
     }
