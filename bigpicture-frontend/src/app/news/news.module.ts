@@ -6,6 +6,7 @@ import { TopStoriesComponent } from './components/topstories/topstories.componen
 import { ArticleSearchComponent } from './components/articlesearch/articlesearch.component';
 import { NewsAggregatorService } from './services/newsAggregator.service';
 import { FormsModule } from '@angular/forms';
+import { BBCService } from './services/bbc.service';
 
 
 
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
 	],
 	providers: [
 		NewsAggregatorService,
-		nytService
+		nytService,
+		BBCService
 	]
 })
 export class NewsModule { }

@@ -3,6 +3,7 @@ import { nytService } from "./nyt.service";
 import { NewsService, Article } from "../models/news.model";
 import { HttpClient } from "@angular/common/http";
 import { Observable, forkJoin, map } from "rxjs";
+import { BBCService } from "./bbc.service";
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +14,7 @@ export class NewsAggregatorService {
 
     constructor(private http: HttpClient) {
         this.sources.push(new nytService(http));
+        this.sources.push(new BBCService(http));
     }
 
     getTopStories(): Observable<Article[]> {
