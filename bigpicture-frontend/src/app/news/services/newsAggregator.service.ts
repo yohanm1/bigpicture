@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { nytService } from "./nyt.service";
 import { NewsService, Article } from "../models/news.model";
 import { HttpClient } from "@angular/common/http";
-import { Observable, forkJoin, map } from "rxjs";
+import { Observable, catchError, forkJoin, map, of } from "rxjs";
 import { BBCService } from "./bbc.service";
 
 @Injectable({
@@ -18,12 +18,22 @@ export class NewsAggregatorService {
     }
 
     getTopStories(): Observable<Article[]> {
-        const allNewsObservables = this.sources.map(source => source.getTopStories());
+        const allNewsObservables = this.sources.map(source => source.getTopStories().pipe(
+            catchError(err => {
+                console.error(`Error in ${source.constructor.name}`, err);
+                return of([]);
+            })
+        ));
         return this.combineArticlesFromSources(allNewsObservables);
     }
 
     searchArticles(query: string): Observable<Article[]> {
-        const allNewsObservables = this.sources.map(source => source.searchArticles(query));
+        const allNewsObservables = this.sources.map(source => source.searchArticles(query).pipe(
+            catchError(err => {
+                console.error(`Error in ${source.constructor.name}`, err);
+                return of([]);
+            })
+        ));
         return this.combineArticlesFromSources(allNewsObservables);
     }
 
