@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Article, NewsService } from "../models/news.model";
-import { Observable, map } from "rxjs";
+import { Observable, map, throwError } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 
 @Injectable({
@@ -27,6 +27,6 @@ export class BBCService implements NewsService {
     }
 
     searchArticles(query: string): Observable<Article[]> {
-        return new Observable<Article[]>; // TODO
+        return throwError('Not implemented yet');
     }
 }
